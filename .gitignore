@@ -10,3 +10,9 @@
 
 .*
 !.gitignore
+
+# JavaDoc
+/javadoc/
+
+# pack
+project.zip
