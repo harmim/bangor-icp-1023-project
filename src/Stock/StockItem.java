@@ -37,7 +37,7 @@ public class StockItem
 	/**
 	 * Creates stock item and initializes it's instance variables.
 	 *
-	 * @param itemId item ID
+	 * @param itemId item ID, five alpha-numeric characters
 	 * @param itemDesc item description
 	 * @param price item price in pounds
 	 * @param quantity quantity of item in stock
@@ -160,12 +160,12 @@ public class StockItem
 	@Override
 	public String toString()
 	{
-		return getClass().getName() + '{'
-			+ "itemId='" + itemId + '\''
-			+ ", itemDesc='" + itemDesc + '\''
-			+ ", price=" + price
-			+ ", quantity=" + quantity
-			+ ", reOrderLevel=" + reOrderLevel
-			+ '}';
+		return getClass().getName() + '{' +
+			"itemId='" + itemId + '\'' +
+			", itemDesc='" + itemDesc + '\'' +
+			", price=" + price +
+			", quantity=" + quantity +
+			", reOrderLevel=" + reOrderLevel +
+			'}';
 	}
 }
