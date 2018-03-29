@@ -51,7 +51,7 @@ public class StockItemTester
 		System.out.println("Actual output:   " + item.getReOrderLevel());
 
 		System.out.println("\nTest No 7 - Test format method.");
-		System.out.println("Expected output: AB123 Test item.             100.0000       20        5");
+		System.out.println("Expected output: AB123   Test item.             100.0000       20              5");
 		System.out.println("Actual output:   " + item.format());
 	}
 }
