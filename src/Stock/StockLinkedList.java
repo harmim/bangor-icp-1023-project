@@ -131,25 +131,10 @@ public class StockLinkedList implements StockList
 	 */
 	private String getStockListHeader()
 	{
-		String formatString = String.format(
-			"%%%ss %%%ss %%%ss %%%ss %%%ss",
-			StockItem.ITEM_ID_FORMAT,
-			StockItem.ITEM_DESC_FORMAT,
-			StockItem.PRICE_FORMAT,
-			StockItem.QUANTITY_FORMAT,
-			StockItem.RE_ORDER_LEVEL_FORMAT
+		String header = String.format(
+			"%-7s %-20s %-14s %-8s %-14s\n", "Item ID", "Description", "Price", "Quantity", "Re-order level"
 		);
-		String header = String.format(formatString + '\n', "Item ID", "Description", "Price", "Quantity", "Re-order level");
-
-		formatString = String.format(
-			"%%0%ss %%0%ss %%0%ss %%0%ss %%0%ss",
-			StockItem.ITEM_ID_FORMAT,
-			StockItem.ITEM_DESC_FORMAT,
-			StockItem.PRICE_FORMAT,
-			StockItem.QUANTITY_FORMAT,
-			StockItem.RE_ORDER_LEVEL_FORMAT
-		);
-		header += String.format(formatString, "", "", "", "", "").replace("0", "*");
+		header += String.format("%07d %020d %014d %08d %014d", 0, 0, 0, 0, 0).replace('0', '*');
 
 		return header;
 	}

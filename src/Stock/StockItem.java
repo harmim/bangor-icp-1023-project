@@ -9,17 +9,6 @@ package Stock;
 public class StockItem
 {
 	/**
-	 * Stock item properties format flags.
-	 */
-	static final String
-		ITEM_ID_FORMAT = "-7",
-		ITEM_DESC_FORMAT = "-20",
-		PRICE_FORMAT = "10.4",
-		QUANTITY_FORMAT = "8",
-		RE_ORDER_LEVEL_FORMAT = "14";
-
-
-	/**
 	 * Item ID. Five alpha-numeric characters.
 	 */
 	private String itemId;
@@ -159,11 +148,7 @@ public class StockItem
 	 */
 	public String format()
 	{
-		String formatString = String.format(
-			"%%%ss %%%ss %%%sf %%%sd %%%sd",
-			ITEM_ID_FORMAT, ITEM_DESC_FORMAT, PRICE_FORMAT, QUANTITY_FORMAT, RE_ORDER_LEVEL_FORMAT
-		);
-		return String.format(formatString, itemId, itemDesc, price, quantity, reOrderLevel);
+		return String.format("%-7s %-20s %14.4f %8d %14d", itemId, itemDesc, price, quantity, reOrderLevel);
 	}
 
 

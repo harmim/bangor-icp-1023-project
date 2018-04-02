@@ -14,6 +14,7 @@ TEST_FILES = $(shell find $(TESTS_DIR) -name *.java)
 .PHONY: test
 test: $(OUT_DIR)
 	java -cp $< StockItemTester
+	java -cp $< StockListTester
 
 
 $(OUT_DIR): $(SRC_FILES) $(TEST_FILES)
