@@ -1,6 +1,4 @@
-import Stock.StockItem;
-import Stock.StockLinkedList;
-import Stock.StockList;
+import Stock.*;
 
 
 /**
@@ -31,9 +29,13 @@ public class StockListTester
 			"\nTest No 2 - " +
 			"Add three items to the list using addItem method and display list using formatStockList method."
 		);
-		list.addItem(new StockItem("A1111", "Test 1", 100.0, 10, 5));
-		list.addItem(new StockItem("B2222", "Test 2", 200.0, 3, 5));
-		list.addItem(new StockItem("C3333", "Test 3", 300.0, 500000, 15));
+		try {
+			list.addItem(new StockItem("A1111", "Test 1", 100.0, 10, 5));
+			list.addItem(new StockItem("B2222", "Test 2", 200.0, 3, 5));
+			list.addItem(new StockItem("C3333", "Test 3", 300.0, 500000, 15));
+		} catch (StockListIllegalStateException e) {
+			System.out.println(e.getMessage());
+		}
 		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +
@@ -49,7 +51,11 @@ public class StockListTester
 			"\nTest No 3 - Update price of one of items in list using updateItemPrice method and display list " +
 			"using formatStockList method."
 		);
-		list.updateItemPrice("A1111", 150.0);
+		try {
+			list.updateItemPrice("A1111", 150.0);
+		} catch (StockListIllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +
@@ -65,7 +71,11 @@ public class StockListTester
 			"\nTest No 4 - Update quantity of one of items in list using updateItemQuantity method and display list " +
 			"using formatStockList method."
 		);
-		list.updateItemQuantity("B2222", 4);
+		try {
+			list.updateItemQuantity("B2222", 4);
+		} catch (StockListIllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +
@@ -81,7 +91,11 @@ public class StockListTester
 			"\nTest No 5 - Update re-order level of one of items in list using updateReOrderLevel method and " +
 			"display list using formatStockList method."
 		);
-		list.updateReOrderLevel("C3333", 10);
+		try {
+			list.updateReOrderLevel("C3333", 10);
+		} catch (StockListIllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +
@@ -107,7 +121,11 @@ public class StockListTester
 			"\nTest No 7 - Remove one of items in list using deleteItem method and display list " +
 			"using formatStockList method."
 		);
-		list.deleteItem("B2222");
+		try {
+			list.deleteItem("B2222");
+		} catch (StockListIllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +

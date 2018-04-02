@@ -12,16 +12,20 @@ public interface StockList
 	 * Adds item to stock list.
 	 *
 	 * @param item item to be added to stock list
+	 *
+	 * @throws StockListIllegalStateException if item with provided item ID is already present in list
 	 */
-	void addItem(StockItem item);
+	void addItem(StockItem item) throws StockListIllegalStateException;
 
 
 	/**
 	 * Removes item from stock list.
 	 *
 	 * @param itemId ID of item which will be removed from stock list
+	 *
+	 * @throws StockListIllegalArgumentException if item with provided item ID is not present in list
 	 */
-	void deleteItem(String itemId);
+	void deleteItem(String itemId) throws StockListIllegalArgumentException;
 
 
 	/**
@@ -29,8 +33,10 @@ public interface StockList
 	 *
 	 * @param itemId ID of item which will be updated
 	 * @param price new price to update for
+	 *
+	 * @throws StockListIllegalArgumentException if item with provided item ID is not present in list
 	 */
-	void updateItemPrice(String itemId, double price);
+	void updateItemPrice(String itemId, double price) throws StockListIllegalArgumentException;
 
 
 	/**
@@ -38,8 +44,10 @@ public interface StockList
 	 *
 	 * @param itemId ID of item which will be updated
 	 * @param quantity new quantity to update for
+	 *
+	 * @throws StockListIllegalArgumentException if item with provided item ID is not present in list
 	 */
-	void updateItemQuantity(String itemId, int quantity);
+	void updateItemQuantity(String itemId, int quantity) throws StockListIllegalArgumentException;
 
 
 	/**
@@ -47,8 +55,10 @@ public interface StockList
 	 *
 	 * @param itemId ID of item which will be updated
 	 * @param reOrderLevel new re-order level to update for
+	 *
+	 * @throws StockListIllegalArgumentException if item with provided item ID is not present in list
 	 */
-	void updateReOrderLevel(String itemId, int reOrderLevel);
+	void updateReOrderLevel(String itemId, int reOrderLevel) throws StockListIllegalArgumentException;
 
 
 	/**

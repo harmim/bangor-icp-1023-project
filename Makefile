@@ -11,6 +11,11 @@ SRC_FILES = $(shell find $(SRC_DIR) -name *.java)
 TEST_FILES = $(shell find $(TESTS_DIR) -name *.java)
 
 
+.PHONY: run
+run: $(OUT_DIR)
+	java -cp $< Stock.StockListApp
+
+
 .PHONY: test
 test: $(OUT_DIR)
 	java -cp $< StockItemTester
