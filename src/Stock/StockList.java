@@ -89,7 +89,7 @@ public interface StockList
 
 	/**
 	 * Saves data from stock list to file specified in {@code loadStockData} invocation.
-	 * Invocation of {@code saveStockData} must prevent {@code loadStockData} invocation.
+	 * Invocation of {@code loadStockData} must prevent {@code saveStockData} invocation.
 	 *
 	 * @return true if data has been successfully saved, false otherwise
 	 */
