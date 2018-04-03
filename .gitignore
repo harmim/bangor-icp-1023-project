@@ -17,3 +17,6 @@
 
 # pack
 project.zip
+
+# stock data file
+/data

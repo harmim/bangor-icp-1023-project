@@ -14,13 +14,15 @@ public class StockListTester
 
 
 		System.out.println(
-			"Test No 1 - Creating StockList using constructor and display list using formatStockList method."
+			"Test No 1 - Creating StockLinkedList using constructor, load data from empty file and display list " +
+			"using formatStockList method."
 		);
 		StockList list = new StockLinkedList();
+		list.loadStockData("tests/data");
 		System.out.println(
 			"Expected output:\n" +
 			"Item ID Description          Price          Quantity Re-order level\n" +
-			"******* ******************** ************** ******** **************"
+			"******* ******************** ************** ******** **************\n"
 		);
 		System.out.println("Actual output:\n" + list.formatStockList());
 
@@ -36,7 +38,6 @@ public class StockListTester
 		} catch (StockListIllegalStateException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +
 			"Item ID Description          Price          Quantity Re-order level\n" +
@@ -45,6 +46,7 @@ public class StockListTester
 			"B2222   Test 2                     200.0000        3              5\n" +
 			"C3333   Test 3                     300.0000   500000             15\n"
 		);
+		System.out.println("Actual output:\n" + list.formatStockList());
 
 
 		System.out.println(
@@ -56,7 +58,6 @@ public class StockListTester
 		} catch (StockListIllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +
 			"Item ID Description          Price          Quantity Re-order level\n" +
@@ -65,6 +66,7 @@ public class StockListTester
 			"B2222   Test 2                     200.0000        3              5\n" +
 			"C3333   Test 3                     300.0000   500000             15\n"
 		);
+		System.out.println("Actual output:\n" + list.formatStockList());
 
 
 		System.out.println(
@@ -76,15 +78,15 @@ public class StockListTester
 		} catch (StockListIllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +
-				"Item ID Description          Price          Quantity Re-order level\n" +
-				"******* ******************** ************** ******** **************\n" +
-				"A1111   Test 1                     150.0000       10              5\n" +
-				"B2222   Test 2                     200.0000        4              5\n" +
-				"C3333   Test 3                     300.0000   500000             15\n"
+			"Item ID Description          Price          Quantity Re-order level\n" +
+			"******* ******************** ************** ******** **************\n" +
+			"A1111   Test 1                     150.0000       10              5\n" +
+			"B2222   Test 2                     200.0000        4              5\n" +
+			"C3333   Test 3                     300.0000   500000             15\n"
 		);
+		System.out.println("Actual output:\n" + list.formatStockList());
 
 
 		System.out.println(
@@ -96,25 +98,25 @@ public class StockListTester
 		} catch (StockListIllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +
-				"Item ID Description          Price          Quantity Re-order level\n" +
-				"******* ******************** ************** ******** **************\n" +
-				"A1111   Test 1                     150.0000       10              5\n" +
-				"B2222   Test 2                     200.0000        4              5\n" +
-				"C3333   Test 3                     300.0000   500000             10\n"
+			"Item ID Description          Price          Quantity Re-order level\n" +
+			"******* ******************** ************** ******** **************\n" +
+			"A1111   Test 1                     150.0000       10              5\n" +
+			"B2222   Test 2                     200.0000        4              5\n" +
+			"C3333   Test 3                     300.0000   500000             10\n"
 		);
+		System.out.println("Actual output:\n" + list.formatStockList());
 
 
 		System.out.println("\nTest No 6 - Test formatReOrderList method.");
-		System.out.println("Actual output:\n" + list.formatReOrderList());
 		System.out.println(
 			"Expected output:\n" +
-				"Item ID Description          Price          Quantity Re-order level\n" +
-				"******* ******************** ************** ******** **************\n" +
-				"B2222   Test 2                     200.0000        4              5\n"
+			"Item ID Description          Price          Quantity Re-order level\n" +
+			"******* ******************** ************** ******** **************\n" +
+			"B2222   Test 2                     200.0000        4              5\n"
 		);
+		System.out.println("Actual output:\n" + list.formatReOrderList());
 
 
 		System.out.println(
@@ -126,13 +128,38 @@ public class StockListTester
 		} catch (StockListIllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println("Actual output:\n" + list.formatStockList());
 		System.out.println(
 			"Expected output:\n" +
-				"Item ID Description          Price          Quantity Re-order level\n" +
-				"******* ******************** ************** ******** **************\n" +
-				"A1111   Test 1                     150.0000       10              5\n" +
-				"C3333   Test 3                     300.0000   500000             10\n"
+			"Item ID Description          Price          Quantity Re-order level\n" +
+			"******* ******************** ************** ******** **************\n" +
+			"A1111   Test 1                     150.0000       10              5\n" +
+			"C3333   Test 3                     300.0000   500000             10\n"
 		);
+		System.out.println("Actual output:\n" + list.formatStockList());
+
+
+		System.out.println("\nTest No 8 - Save data to file.");
+		System.out.println("Expected output: Stock data has been successfully saved.");
+		if (list.saveStockData()) {
+			System.out.println("Actual output:   Stock data has been successfully saved.");
+		} else {
+			System.out.println("Actual output:   Stock data has not been successfully saved.");
+		}
+
+
+		System.out.println(
+			"\nTest No 8 - Create new StockLinkedList using constructor, load data from previous " +
+			"and display list using formatStockList method."
+		);
+		StockList list1 = new StockLinkedList();
+		list1.loadStockData("tests/data");
+		System.out.println(
+			"Expected output:\n" +
+			"Item ID Description          Price          Quantity Re-order level\n" +
+			"******* ******************** ************** ******** **************\n" +
+			"A1111   Test 1                     150.0000       10              5\n" +
+			"C3333   Test 3                     300.0000   500000             10\n"
+		);
+		System.out.println("Actual output:\n" + list1.formatStockList());
 	}
 }

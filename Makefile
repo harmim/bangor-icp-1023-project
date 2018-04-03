@@ -9,17 +9,24 @@ JAVADOC_DIR = javadoc
 
 SRC_FILES = $(shell find $(SRC_DIR) -name *.java)
 TEST_FILES = $(shell find $(TESTS_DIR) -name *.java)
+DATA_FILE = data
 
 
 .PHONY: run
-run: $(OUT_DIR)
-	java -cp $< Stock.StockListApp $(ARGS)
+run: $(OUT_DIR) $(DATA_FILE)
+	java -cp $< Stock.StockListApp $(DATA_FILE)
+
+
+$(DATA_FILE):
+	touch $@
 
 
 .PHONY: test
 test: $(OUT_DIR)
+	cp /dev/null $(TESTS_DIR)/data
 	java -cp $< StockItemTester
 	java -cp $< StockListTester
+	rm -f $(TESTS_DIR)/data
 
 
 $(OUT_DIR): $(SRC_FILES) $(TEST_FILES)
@@ -42,4 +49,4 @@ $(PACK): $(SRC_DIR) $(TESTS_DIR) $(JAVADOC_DIR)
 
 .PHONY: clean
 clean:
-	rm -rf $(OUT_DIR) $(PACK) $(JAVADOC_DIR)
+	rm -rf $(OUT_DIR) $(PACK) $(JAVADOC_DIR) $(DATA_FILE)
