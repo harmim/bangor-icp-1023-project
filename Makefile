@@ -13,7 +13,7 @@ TEST_FILES = $(shell find $(TESTS_DIR) -name *.java)
 
 .PHONY: run
 run: $(OUT_DIR)
-	java -cp $< Stock.StockListApp
+	java -cp $< Stock.StockListApp $(ARGS)
 
 
 .PHONY: test

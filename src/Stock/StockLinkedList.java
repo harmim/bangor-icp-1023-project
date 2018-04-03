@@ -1,6 +1,7 @@
 package Stock;
 
 
+import java.io.*;
 import java.util.LinkedList;
 import java.util.function.Predicate;
 
@@ -16,6 +17,11 @@ public class StockLinkedList implements StockList
 	 * Stock list as LinkedList collection.
 	 */
 	private LinkedList<StockItem> list = new LinkedList<>();
+
+	/**
+	 * File name of file for loading and saving data.
+	 */
+	private String filename = null;
 
 
 	/**
@@ -92,6 +98,67 @@ public class StockLinkedList implements StockList
 	public String formatReOrderList()
 	{
 		return getStockListHeader() + getFormattedList(item -> item.getQuantity() < item.getReOrderLevel());
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public boolean loadStockData(String filename)
+	{
+		try (
+			FileInputStream fileStream = new FileInputStream(new File(filename));
+			ObjectInputStream objectStream = new ObjectInputStream(fileStream)
+		) {
+			list = (LinkedList<StockItem>) objectStream.readObject();
+			this.filename = filename;
+			return true;
+
+		} catch (FileNotFoundException e) {
+			System.out.println("File for load data has not been found.\n");
+
+		} catch (EOFException e) {
+			list = new LinkedList<>();
+			this.filename = filename;
+			return true;
+
+		} catch (IOException | NullPointerException e) {
+			System.out.println("I/0 error occurred during loading data from a file.\n");
+
+		} catch (ClassNotFoundException | ClassCastException e) {
+			System.out.println("Unable to load data from a file, input file is probably damaged.\n");
+		}
+
+		return false;
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean saveStockData()
+	{
+		try (
+			FileOutputStream fileStream = new FileOutputStream(new File(filename));
+			ObjectOutputStream objectStream = new ObjectOutputStream(fileStream)
+		) {
+			objectStream.writeObject(list);
+			return true;
+
+		} catch (NullPointerException e) {
+			System.out.println("File for save data has not been specified.\n");
+
+		} catch (FileNotFoundException e) {
+			System.out.println("File for save data has not been found.\n");
+
+		} catch (IOException e) {
+			System.out.println("I/O error occurred during saving stock data to a file.\n");
+		}
+
+		return false;
 	}
 
 

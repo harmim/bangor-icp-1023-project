@@ -1,12 +1,15 @@
 package Stock;
 
 
+import java.io.Serializable;
+
+
 /**
  * Representation of item in stock.
  *
  * @author Dominik Harmim harmim6@gmail.com
  */
-public class StockItem
+public class StockItem implements Serializable
 {
 	/**
 	 * Item ID. Five alpha-numeric characters.

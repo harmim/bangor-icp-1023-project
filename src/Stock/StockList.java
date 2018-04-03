@@ -76,4 +76,22 @@ public interface StockList
 	 * @return formatted string representation of re-order list
 	 */
 	String formatReOrderList();
+
+
+	/**
+	 * Loads data from the stock file into the stock list.
+	 *
+	 * @param filename file name from which date will be loaded
+	 * @return true if data has been successfully loaded, false otherwise
+	 */
+	boolean loadStockData(String filename);
+
+
+	/**
+	 * Saves data from stock list to file specified in {@code loadStockData} invocation.
+	 * Invocation of {@code saveStockData} must prevent {@code loadStockData} invocation.
+	 *
+	 * @return true if data has been successfully saved, false otherwise
+	 */
+	boolean saveStockData();
 }

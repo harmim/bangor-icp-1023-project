@@ -23,6 +23,7 @@ class StockListCli
 		"Update item re-order level",
 		"Print stock list",
 		"Print re-order list",
+		"Save stock data",
 		"Exit"
 	};
 
@@ -131,6 +132,10 @@ class StockListCli
 				break;
 
 			case 8:
+				saveStockData();
+				break;
+
+			case 9:
 				return false;
 
 			default:
@@ -256,6 +261,14 @@ class StockListCli
 	private void printReOrderList()
 	{
 		System.out.println('\n' + list.formatReOrderList());
+	}
+
+
+	private void saveStockData()
+	{
+		if (list.saveStockData()) {
+			System.out.println("Stock data has been successfully saved.\n");
+		}
 	}
 
 

@@ -10,6 +10,11 @@ public class StockListApp
 {
 	public static void main(String[] args)
 	{
-		new StockListCli(new StockLinkedList()).run();
+		StockList list = new StockLinkedList();
+		if (args.length >= 1) {
+			list.loadStockData(args[0]);
+		}
+
+		new StockListCli(list).run();
 	}
 }
