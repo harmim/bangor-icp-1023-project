@@ -1,4 +1,4 @@
-import Stock.StockItem;
+package stock;
 
 
 /**

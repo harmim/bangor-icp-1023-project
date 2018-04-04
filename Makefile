@@ -14,7 +14,7 @@ DATA_FILE = data
 
 .PHONY: run
 run: $(OUT_DIR) $(DATA_FILE)
-	java -cp $< Stock.StockListApp $(DATA_FILE)
+	java -cp $< stock.StockListApp $(DATA_FILE)
 
 
 $(DATA_FILE):
@@ -24,8 +24,8 @@ $(DATA_FILE):
 .PHONY: test
 test: $(OUT_DIR)
 	cp /dev/null $(TESTS_DIR)/data
-	java -cp $< StockItemTester
-	java -cp $< StockListTester
+	java -cp $< stock.StockItemTester
+	java -cp $< stock.StockListTester
 	rm -f $(TESTS_DIR)/data
 
 
