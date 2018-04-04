@@ -341,6 +341,7 @@ class StockListCli
 			System.out.print("Enter new price :> ");
 			return input.nextDouble();
 		} catch (InputMismatchException e) {
+			input.nextLine();
 			throw new StockListCliValidationException("Invalid price.", e);
 		}
 	}
@@ -359,6 +360,7 @@ class StockListCli
 			System.out.print("Enter new quantity :> ");
 			return input.nextInt();
 		} catch (InputMismatchException e) {
+			input.nextLine();
 			throw new StockListCliValidationException("Invalid quantity.", e);
 		}
 	}
@@ -377,6 +379,7 @@ class StockListCli
 			System.out.print("Enter new re-order level :> ");
 			return input.nextInt();
 		} catch (InputMismatchException e) {
+			input.nextLine();
 			throw new StockListCliValidationException("Invalid re-order level.", e);
 		}
 	}
